@@ -15,10 +15,21 @@ Route::get('/', function () {
 });
 
 Route::get('/products', function () {
+
     return view('products');
+});
+
+Route::get('/ajaxproduct', function(){
+    $jsonString = json_decode(Storage::disk('local')->get('data.json'));
+//    $data = json_decode($jsonString, true);
+//        return $data;
+
+    return $jsonString;
 });
 
 Auth::routes();
 
 
-Route::get('/product/add', 'ProductController@store');
+Route::post('/product/add', 'ProductController@store');
+
+
