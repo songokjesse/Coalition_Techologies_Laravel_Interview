@@ -10,11 +10,16 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::get('/products', function () {
+
+
+Auth::routes();
+
+
+Route::post('/product/add', 'ProductController@store');
+
+
+Route::get('/', function () {
 
     return view('products');
 });
@@ -26,10 +31,5 @@ Route::get('/ajaxproduct', function(){
 
     return $jsonString;
 });
-
-Auth::routes();
-
-
-Route::post('/product/add', 'ProductController@store');
 
 
