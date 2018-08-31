@@ -66,6 +66,7 @@
             </div>
          </form>
                  <!-- End of Form    -->
+            <br>
             <div id="table"></div>
         </div>
         <div>
@@ -90,13 +91,13 @@
                 // var result = $.parseJSON(JSON.stringify(data));
 
 
-                var string = '<table class="table"><tr><th>Product Name</th><th>Quantity in Stock</th><th>Price Per Item</th><tr>';
+                var string = '<table class="table table-striped table-bordered"><tr><th>Product Name</th><th>Quantity in Stock</th><th>Price Per Item</th><th>Total Amount </th><tr>';
 
                 /* from result create a string of data and append to the div */
 
                 $.each( data, function( key, value ) {
                         string +=  "<td> " +value['Product_name']+'</td><td> '+value['Quantity_in_Stock']+
-                            '</td><td> '+ value['Price_per_item']+ "</td> </tr>"; });
+                            '</td><td> '+ value['Price_per_item']+ "</td><td>" + (value['Quantity_in_Stock'] * value['Price_per_item'])+"</td></tr>"; });
                         string += '</table>';
 
                         $("#table").html(string);
